@@ -1,10 +1,10 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
     @php
     $countries = \App\Models\Country::all();
-    
+    $categories= \App\Models\Category::all();
+    $highestRange = $categories->max('range');
+    $highestRangeCategoryInfo = $categories->where('range', $highestRange)->first();
     @endphp
 
     @if (count($countries))
@@ -28,5 +28,7 @@
         @endforeach
     @endif
 </div>
-
-@endsection
+<div class="container">
+    <h3>El rango mas alto es {{$highestRangeCategoryInfo->name}}-{{$highestRangeCategoryInfo->range}} </h3>
+    
+</div>

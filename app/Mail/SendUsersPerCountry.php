@@ -2,8 +2,6 @@
 
 namespace App\Mail;
 
-use App\Models\Category;
-use App\Models\Country;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
