@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhoneController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/phone',PhoneController::class)->names('phone')->except('create')->middleware('auth');
+Route::get('phone/create/{user}', [PhoneController::class,'create'])->name('phone.create')->middleware('auth');;

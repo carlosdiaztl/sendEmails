@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PhoneStore;
 use App\Models\Phone;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PhoneController extends Controller
@@ -18,16 +20,24 @@ class PhoneController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(User $user)
     {
+      
+        return view('phones.create',compact('user'));
         //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PhoneStore $request)
     {
+        $phone = new Phone(
+            ["phone"=>"+".$request['areacode']. $request['phone'],
+            "user_id"=>$request['user_id'],]);
+        $phone->save();
+        return redirect()->route('home')->with(['success' => 'Producto creado']);
+
         //
     }
 

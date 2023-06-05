@@ -27,6 +27,8 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Range</th>
                                     <th scope="col">Country</th>
+                                    <th scope="col">Numbers</th>
+                                    <th scope="col">Actions</th>
                                    
                                 </tr>
                             </thead>
@@ -38,6 +40,14 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->category->name }}{{ $user->category->range }}</td>
                                         <td>{{ $user->country->name }}</td>
+                                        <td class="">
+                                            @foreach ($user->phones  as $number )
+                                            {{$number->phone}}
+                                        @endforeach
+                                             
+                                        
+                                        </td>
+                                        <td> <a href="{{route('phone.create',$user)}}">ADD phone</a></td>
                                        
                                     </tr>
                                 @endforeach
