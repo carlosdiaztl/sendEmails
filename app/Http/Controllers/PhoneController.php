@@ -36,7 +36,7 @@ class PhoneController extends Controller
             ["phone"=>"+".$request['areacode']. $request['phone'],
             "user_id"=>$request['user_id'],]);
         $phone->save();
-        return redirect()->route('home')->with(['success' => 'Producto creado']);
+        return redirect()->route('home')->with(['success' => 'Telefono creado']);
 
         //
     }
